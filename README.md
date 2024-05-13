@@ -1,4 +1,4 @@
-# EXNO-6-DS-DATA VISUALIZATION USING SEABORN LIBRARY
+# EX:6 DATA VISUALIZATION USING SEABORN LIBRARY
 
 # Aim:
   To Perform Data Visualization using seaborn python library for the given datas.
@@ -19,179 +19,100 @@ STEP 5:Include Necessary parameters in each functions.
 
 # Coding and Output:
 ```
-NAME : R.THIVAKAR
-REG NO : 212222240109
-```
-
-```
+import pandas as pd
+df=pd.read_csv("/content/titanic_dataset.csv")
+df.head()
 import seaborn as sns
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-x = [1, 2, 3, 4, 5]
-y = [3, 6, 2, 7, 1]
-sns.lineplot(x=x,y=y)
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/18a0f3c8-10a6-42b4-9eb3-45770f741ac3)
+![6-0](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/d83ea26b-0be7-42f2-ac05-23f7be976ac5)
 
+### 1.Line Plot
 ```
-df = sns.load_dataset("tips")
-df
+x=[1,2,3,4,5]
+y=[3,6,2,7,1]
+sns.lineplot(x=x,y=y)
+plt.title('Line Plot')
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/0124fef5-dcba-4c31-9831-db85384d9c5a)
+![6-1](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/f0d7d503-3f08-41e4-a2a0-4151ab5c2cb8)
+
+### 2.Multi Line Plot
 ```
-sns.lineplot(x="total_bill",y="tip", data=df, hue="sex", linestyle='solid', legend="auto")
+x=[1,2,3,4,5]
+y1=[3,5,2,6,1]
+y2=[1,6,4,3,8]
+y3=[5,2,7,1,4]
+sns.lineplot(x=x,y=y1)
+sns.lineplot(x=x,y=y2)
+sns.lineplot(x=x,y=y3)
+plt.title('Multi Line Plot')
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/1bbe2d28-735c-4114-aff7-9030d334c830)
-```
-x=[1, 2, 3, 4, 5]
-y1=[3, 5, 2, 6, 1]
-y2=[1, 6, 4, 3, 8]
-y3=[5, 2, 7, 1, 4]
-sns.lineplot(x=x, y=y1)
-sns.lineplot(x=x, y=y2)
-sns.lineplot(x=x, y=y3)
-plt.title("Multi-Line Plot")
-plt.xlabel('X Label')
-plt.ylabel("Y Label")
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/4d6c2a15-2352-4ba4-bd6b-97a54cd93ce7)
-```
-tips=sns.load_dataset('tips')
-avg_total_bill = tips.groupby('day')['total_bill'].mean()
-avg_tip = tips.groupby('day')['tip'].mean()
-plt.figure(figsize=(8, 6))
-p1 = plt.bar(avg_total_bill.index, avg_total_bill, label='Total Bill')
-p2 = plt.bar(avg_tip.index, avg_tip, bottom=avg_total_bill, label='Tip')
-plt.xlabel('Day of the Week')
-plt.ylabel('Amount')
-plt.title('Average Total Bill and Tip by Day')
-plt.legend()
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/86b30955-7bb2-44af-92d1-39e8be4b56ea)
-```
-avg_total_bill = tips.groupby('time')['total_bill'].mean() 
-avg_tip=tips.groupby('time') ['tip'].mean()
-p1= plt.bar(avg_total_bill.index, avg_total_bill, label='Total Bill', width=0.4)
-p2 = plt.bar(avg_tip.index,avg_tip,bottom=avg_total_bill,label='Tip', width=0.4)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/27a32e9f-e734-4f47-adf1-bafddba998c3)
-```
-years=range(2000, 2012)
-apples=[0.895, 0.91, 0.919, 0.926, 0.929, 0.931, 0.934, 0.936, 0.937, 0.9375, 0.9372, 0.939] 
-oranges = [0.962, 0.941, 0.930, 0.923, 0.918, 0.908, 0.907, 0.904, 0.901, 0.898, 0.9, 0.896, ]
-```
-```
-plt.bar(years, apples)
-plt.bar(years, oranges, bottom=apples)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/31f5b45b-5a80-4259-a259-a4cecee25ee5)
-```
-import seaborn as sns
-dt= sns.load_dataset('tips')
-sns.barplot(x='day', y='total_bill', hue='sex', data=dt, palette='Set1')
-plt.xlabel('Day of the Week')
-plt.ylabel("Total Bill")
-plt.title('Total Bill by Day and Gender')
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/359daca3-3920-4c78-b593-7d660c09cc36)
-```
-tit=pd.read_csv("titanic_dataset.csv")
-tit
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/b749f1ee-b0a6-4a67-a340-f9cae8a8290a)
+![6-2](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/d4c830c1-17e2-4533-a5bf-9125b002c47b)
+
+## TO VISUALIZE RELATIONSHIPS
+### 1.Bar Chart
 ```
 plt.figure(figsize=(8,5))
-sns.barplot(x='Embarked', y='Fare', data=tit, palette='rainbow') 
-plt.title("Fare of Passenger by Embarked Town")
+sns.barplot(x='Embarked',y='Fare',data=df,palette='rainbow')
+plt.title("Fare Of Passenger By Embarked Town")
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/03dbd087-2a3e-4bfa-8847-bc2e9bbe7cc3)
+![6-3](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/d8824a6e-d89e-4469-9aaf-74ee16c4e961)
+
+### 2.Scatter Plot
 ```
-plt.figure(figsize=(8,5))
-sns.barplot(x='Embarked', y='Fare', data=tit, palette='rainbow', hue='Pclass') 
-plt.title("Fare of Passenger by Embarked Town, Divided by Class")
+sns.scatterplot(x="Age", y="Fare", data=df)
+plt.title('Scatterplot of Age vs Fare')
+plt.show()
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/090114ac-6d91-4117-80ca-2bb2fe72af26)
+![6-4](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/78b9ffbd-cc91-4f6a-b41a-c367b83062f7)
+
+### 3.Bubble Chart
 ```
-tips=sns.load_dataset('tips')
-sns.scatterplot(x='total_bill', y='tip', hue='sex', data=tips)
-plt.xlabel('Total Bill')
-plt.ylabel("Tip Amount")
-plt.title('Scatter Plot of Total Bill vs. Tip Amount')
+sns.scatterplot(x="Age", y="Fare", size="Pclass", data=df, sizes=(30, 200))
+plt.title('Bubble Chart of Age vs Fare, Size by Passenger Class')
+plt.show()
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/b7984ccc-60c8-4cf2-ba31-0dafe6119b91)
+![6-5](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/bd9c1f59-b33b-4869-aa5a-0ee876a7c8ab)
+
+## TO CAPTURE DISTRIBUTIONS
+### 1.Histogram
 ```
-num_var = np.random.randn(1000)
-num_var=pd.Series(num_var, name = "Numerical variable")
-num_var
+sns.histplot(data=df,x="Pclass",hue="Survived",kde=True)
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/5e149370-320f-4c4b-b6e9-93839011d166)
+![6-6](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/bca9a8b5-ad6d-4488-89bc-8fe7fdcb4967)
+
+### 2.Box Plot
 ```
-sns.histplot(data = num_var, kde = True)
+sns.boxplot(x='Pclass',y='Age',data=df,palette='rainbow')
+plt.title("Age By Passenger Class")
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/39b3d5fa-e8af-45f5-afb2-2875c766a5e6)
+![6-7](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/95bb6d12-2723-432d-a50a-6db241a68633)
+
+### 3.Violin Plot
 ```
-df=pd.read_csv("titanic_dataset.csv")
-sns.histplot(data=df,x="Pclass", hue="Survived", kde=True)
+sns.violinplot(x="Pclass", y="Fare", data=df)
+plt.title('Violin Plot of Fare by Passenger Class')
+plt.show()
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/e8b91ede-1cc0-4087-beb6-c3c56d8137ee)
+![6-8](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/a449378c-ebf5-416b-901c-3110875651ef)
+
+### 4.Density Plot
 ```
-tips=sns.load_dataset('tips')
-sns.boxplot(x=tips['day'], y=tips ['total_bill'], hue=tips['sex'])
+sns.kdeplot(data=df['Age'], shade=True)
+plt.title('Density Plot of Passenger Ages')
+plt.show()
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/c7d0ff3a-e9a0-4369-a9c9-9229d84776c3)
+![6-9](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/c2945da4-34fe-4526-8fcb-63df89686fe9)
+
+### 5.Heatmap
 ```
-sns.boxplot(x="day", y="total_bill", hue="smoker", data=tips, linewidth=2, width=0.6, boxprops={"facecolor": "lightblue", "edgecolor": "darkblue"},
-whiskerprops={"color": "black", "linestyle": "--", "linewidth": 1.5}, capprops={"color": "black", "linestyle": "--", "linewidth": 1.5})
+numeric_df = df.select_dtypes(include=['float64', 'int64'])
+corr_matrix = numeric_df.corr()
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
+plt.title('Heatmap of Titanic Dataset')
+plt.show()
 ```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/dc5777c4-83cf-47d2-ba0c-b6bb81547441)
-```
-sns.violinplot(x="day", y="total_bill", hue="smoker", data=tips, linewidth=2, width=0.6, palette="Set3", inner="quartile")
-plt.xlabel("Day of the Week")
-plt.ylabel("Total Bill")
-plt.title("Violin Plot of Total Bill by Day and Smoker Status")
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/8dec8878-d0bb-46ca-bc17-095aba86cffd)
-```
-mart=pd.read_csv("titanic_dataset.csv")
-mart
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/32c63c42-35dc-47df-b851-c13e54c166aa)
-```
-mart=mart[['PassengerId', 'Survived', 'Age', 'Name', 'Ticket', 'Embarked']] 
-mart.head(10)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/bcbe61b9-5739-4853-a186-302272133266)
-```
-sns.kdeplot(data=mart,x='PassengerId')
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/727482e0-5b45-47e4-8542-93ebc9cfb5b7)
-```
-sns.kdeplot(data=mart,x='Age')
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/9bb955c9-ba97-48ab-b158-35a44931ccf6)
-```
-sns.kdeplot(data=mart)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/8cc57d95-8df2-4483-8c98-2edbcfb68b0c)
-```
-sns.kdeplot(data=mart,x='PassengerId',hue='Survived',multiple='stack')
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/f56e128b-5393-46e8-acb6-33bfd6fde4a9)
-```
-sns.kdeplot(data=mart,x='PassengerId',y='Survived')
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/4f66d13f-770e-4b17-b29d-74f42cb4395e)
-```
-data = np.random.randint(low = 1, high = 100, size = (10,10))
-hm=sns.heatmap(data=data,annot=True)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/5eba9f52-3c11-4640-b78f-451463d24415)
-```
-hm=sns.heatmap(data=data)
-```
-![image](https://github.com/Sriram8452/EXNO-6-DS/assets/118708032/4bbbf59a-e638-4c7b-bf5c-5298f9bada3b)
+![6-10](https://github.com/Divya110205/EXNO-6-DS/assets/119404855/e3abb871-9cba-4007-b9fd-03c5e007347d)
 
 # Result:
-
-Thus, all the data visualization techniques of seaborn has been implemented.
+  Thus, the Data Visualization using seaborn python library for the given data is implemented successfully
